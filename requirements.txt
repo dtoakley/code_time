@@ -1,0 +1,2 @@
+Skype4Py==1.0.35
+schedule==0.3.2
