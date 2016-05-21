@@ -1,6 +1,6 @@
-import time
 import Skype4Py
-from datetime import datetime, timedelta
+import schedule
+from datetime import datetime, timedelta, time
 
 
 class CodeTimeBot(object):
@@ -22,9 +22,18 @@ class CodeTimeBot(object):
     def get_missed_chats(self):
         return self.missed_chats
 
-if __name__ == "__main__":
-    bot = CodeTimeBot()
 
-    while True:
+def code_time():
+    bot = CodeTimeBot()
+    is_code_time = True
+
+    while is_code_time:
         bot.update_missed_chats()
         time.sleep(1.0)
+        now = datetime.now()
+        if now.time() > time(13, 00):
+            is_code_time = False
+
+if __name__ == "__main__":
+    schedule.every().wednesday.at("9:00").do(code_time)
+    schedule.every().friday.at("9:00").do(code_time)
