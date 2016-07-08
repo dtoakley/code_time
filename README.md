@@ -7,7 +7,7 @@ A Skype auto-responder for when you are trying to focus on coding.
 ```
 virtualenv venv
 source venv/bin/activate
-pip install -r requiremnts
+pip install -r requirements.txt
 ```
 
 # Run
